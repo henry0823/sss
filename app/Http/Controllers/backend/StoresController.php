@@ -28,4 +28,18 @@ class StoresController extends Controller
 
     	return redirect("backend/");
     }
+
+    public function storeservice(Request $request)
+    {
+        $storeservice = new StoreService(array(
+            'domain' => $request->domain,
+        ));
+
+        $user = User::find(Auth::id());
+        $storeservice = $user->storeservices()->save($storeservice);
+
+        return redirect("backend/");
+    }
 }
+
+

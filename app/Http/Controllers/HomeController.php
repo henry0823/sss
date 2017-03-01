@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -22,9 +23,17 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        // 依User的權限導到其後台 (#阿狗)
-        $id = Auth::id();
-        return view('home');
+    {  
+        $users = Auth::User();
+        
+        if($users->rule == '1')
+        {
+            return view('home');
+        }
+        else
+        {
+            return view('tester.test');
+        }
+        
     }
 }

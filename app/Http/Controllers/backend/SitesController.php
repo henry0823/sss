@@ -2,15 +2,24 @@
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use Session;
-use App\Stores;
 
 class SitesController extends Controller
 {    
     public function index()
     {
-    	// $stores = 
-
-        return view('backend.dashboard');
+    	$users = Auth::User();
+        
+        if($users->rule == '1')
+        {
+        	// $stores = 
+			return view('backend.dashboard');
+        }
+    	else
+    	{
+    		return view('tester.test');
+    	}
     }
 }

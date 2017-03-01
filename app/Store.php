@@ -12,5 +12,6 @@ class Store extends Model
     public function users()
     {
 		return $this->belongsToMany('App\User', 'user_stores', 'user_id', 'store_id');
+    	return $this->belongsToMany('App\Store','user_storeservices','user_id','store_id');
     }
 }

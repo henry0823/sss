@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => 'backend'], function() 
+Route::group(['prefix' => 'backend',], function() 
 {
 	Route::group(['middleware' => 'auth'], function()
     {
@@ -19,9 +19,10 @@ Route::group(['prefix' => 'backend'], function()
 	});
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () 
+	{
+	    return view('welcome');
+	});
 
 Auth::routes();
 
