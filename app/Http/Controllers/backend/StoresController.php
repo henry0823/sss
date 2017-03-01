@@ -18,7 +18,6 @@ class StoresController extends Controller
 
     public function store(Request $request)
     {
-    	//建立一個StoreService, 為不同方案關聯不同功能使用權限 (#阿狗)
     	$store = new Store(array(
         	'domain' => $request->domain,
         ));
@@ -29,17 +28,6 @@ class StoresController extends Controller
     	return redirect("backend/");
     }
 
-    public function storeservice(Request $request)
-    {
-        $storeservice = new StoreService(array(
-            'domain' => $request->domain,
-        ));
-
-        $user = User::find(Auth::id());
-        $storeservice = $user->storeservices()->save($storeservice);
-
-        return redirect("backend/");
-    }
 }
 
 
